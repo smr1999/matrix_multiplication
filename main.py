@@ -14,6 +14,7 @@ class Main:
         self.__initalize_objects()
         self.__calculate()
         self.__write_results()
+        self.__print_results()
 
     def __initalize_objects(self) -> None:
         self.matrix_first: MatrixGeneration = MatrixGeneration(
@@ -80,6 +81,14 @@ class Main:
                 file_name=f'result_files/{Config.gustavson_product_log_file}.csv'
             )
         )
+
+    def __print_results(self) -> None:
+        print(
+            f'inner product : <No memory access : {self.inner_product.number_of_memory_access}>, <No operations: {self.inner_product.number_of_memory_access}>')
+        print(
+            f'outer product : <No memory access : {self.outer_product.number_of_memory_access}>, <No operations: {self.outer_product.number_of_memory_access}>')
+        print(
+            f'gustavson product : <No memory access : {self.gustavson_product.number_of_memory_access}>, <No operations: {self.gustavson_product.number_of_memory_access}>')
 
 
 if __name__ == '__main__':

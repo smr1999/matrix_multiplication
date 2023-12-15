@@ -17,6 +17,14 @@ class GustavsonProduct(Product):
                     self.result[m][n] += \
                         self.first_matrix[m][k] * self.second_matrix[k][n]
 
+                    self.number_of_operations += 1
+
+                    self.check_new_access(
+                        new_first_matrix_index_access=(m, k),
+                        new_second_matrix_index_access=(k, n),
+                        new_result_matrix_index_access=(m, n)
+                    )
+
                     if self.matrix_logger:
                         self.matrix_logger.add_log(
                             row_index=m,
