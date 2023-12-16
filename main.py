@@ -84,11 +84,11 @@ class Main:
 
     def __print_results(self) -> None:
         print(
-            f'inner product : <No memory access : {self.inner_product.number_of_memory_access}>, <No operations: {self.inner_product.number_of_memory_access}>')
+            f'inner product : <No memory access : {self.inner_product.number_of_memory_access}>, <No operations: {self.inner_product.number_of_operations}>')
         print(
-            f'outer product : <No memory access : {self.outer_product.number_of_memory_access}>, <No operations: {self.outer_product.number_of_memory_access}>')
+            f'outer product : <No memory access : {self.outer_product.number_of_memory_access}>, <No operations: {self.outer_product.number_of_operations}>')
         print(
-            f'gustavson product : <No memory access : {self.gustavson_product.number_of_memory_access}>, <No operations: {self.gustavson_product.number_of_memory_access}>')
+            f'gustavson product : <No memory access : {self.gustavson_product.number_of_memory_access}>, <No operations: {self.gustavson_product.number_of_operations}>')
 
 
 if __name__ == '__main__':

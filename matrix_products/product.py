@@ -13,9 +13,9 @@ class Product:
         self.number_of_operations: int = 0
         self.number_of_memory_access: int = 0
 
-        self.__previous_first_matrix_index_access: tuple[int, int] = (-1, -1)
-        self.__previous_second_matrix_index_access: tuple[int, int] = (-1, -1)
-        self.__previous_result_matrix_index_access: tuple[int, int] = (-1, -1)
+        self.previous_first_matrix_index_access: tuple[int, int] = (-1, -1)
+        self.previous_second_matrix_index_access: tuple[int, int] = (-1, -1)
+        self.previous_result_matrix_index_access: tuple[int, int] = (-1, -1)
 
     @property
     def first_matrix(self) -> list[list[float]]:
@@ -32,18 +32,6 @@ class Product:
     @property
     def matrix_logger(self) -> MatrixLogger:
         return self.__matrix_logger
-
-    @property
-    def previous_first_matrix_index_access(self) -> tuple[int, int]:
-        return self.__previous_first_matrix_index_access
-
-    @property
-    def previous_second_matrix_index_access(self) -> tuple[int, int]:
-        return self.__previous_second_matrix_index_access
-
-    @property
-    def previous_result_matrix_index_access(self) -> tuple[int, int]:
-        return self.__previous_result_matrix_index_access
 
     def __check_dimensions(self) -> None:
         for row in self.__first_matrix:
@@ -69,12 +57,15 @@ class Product:
     def check_new_access(self, new_first_matrix_index_access: tuple[int, int], new_second_matrix_index_access: tuple[int, int], new_result_matrix_index_access: tuple[int, int]):
         if new_first_matrix_index_access != self.previous_first_matrix_index_access:
             self.number_of_memory_access += 1
+            self.previous_first_matrix_index_access = new_first_matrix_index_access
 
         if new_second_matrix_index_access != self.previous_second_matrix_index_access:
             self.number_of_memory_access += 1
+            self.previous_second_matrix_index_access = new_second_matrix_index_access
 
         if new_result_matrix_index_access != self.previous_result_matrix_index_access:
             self.number_of_memory_access += 1
+            self.previous_result_matrix_index_access = new_result_matrix_index_access
 
     def calculate(self) -> list[list[float]]:
         # different from each multiplication
